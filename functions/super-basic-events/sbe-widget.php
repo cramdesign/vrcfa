@@ -71,6 +71,11 @@ class Upcoming_Events extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'show_feature' ); ?>"><?php _e( 'Show featured image, if available?' ); ?></label> 
         </p>
         
+		<p>
+			<input id="<?php echo $this->get_field_id( 'show_buttons' ); ?>" name="<?php echo $this->get_field_name( 'show_buttons' ); ?>" type="checkbox" value="1" <?php checked( '1', $instance['show_buttons'] ); ?>/>
+			<label for="<?php echo $this->get_field_id( 'show_buttons' ); ?>"><?php _e( 'Show the buttons?' ); ?></label> 
+        </p>
+        
 		<?php
 	}
 
@@ -90,6 +95,7 @@ class Upcoming_Events extends WP_Widget {
 		$instance['number_events'] 	= $new_instance['number_events'];
 		$instance['show_excerpt'] 	= $new_instance['show_excerpt'];
 		$instance['show_feature'] 	= $new_instance['show_feature'];
+		$instance['show_buttons'] 	= $new_instance['show_buttons'];
 
 		return $instance;
 		
@@ -109,6 +115,7 @@ class Upcoming_Events extends WP_Widget {
 		$number 		= $instance['number_events'];
 		$show_excerpt 	= $instance['show_excerpt'];
 		$show_feature 	= $instance['show_feature'];
+		$show_buttons 	= $instance['show_buttons'];
 
 		//Preparing the query for events
 		$meta_quer_args = array(
@@ -154,7 +161,7 @@ class Upcoming_Events extends WP_Widget {
 			echo( '<div class="events">' );
 			while( $upcoming_events->have_posts() ): $upcoming_events->the_post();
 			
-				sbe_list_output( $show_excerpt, $show_feature );
+				sbe_list_output( $show_excerpt, $show_feature, $show_buttons );
 						
 			endwhile;
 			echo( '</div><!-- events -->' );
@@ -172,7 +179,7 @@ class Upcoming_Events extends WP_Widget {
 	}
 }
 
-function sbe_list_output( $desc = false, $feature = true, $size = 'thumbnail', $class = 'event slat' ) {
+function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size = 'thumbnail', $class = 'event slat' ) {
 
 	$start_date		= get_metabox( 'event-start-date' );
 	$end_date 		= get_metabox( 'event-end-date' );
@@ -203,19 +210,23 @@ function sbe_list_output( $desc = false, $feature = true, $size = 'thumbnail', $
 			
 			<?php if ( $desc and has_excerpt() ) echo( '<div class="content">' . get_the_excerpt() . '</div>' ); ?>
 			
-			<nav>
-				
-				<?php 
+			<?php if( $buttons ) : ?>
+			
+				<nav>
 					
-					echo( '<a href="' . get_the_permalink() . '" class="button">Info</a>' );
-				
-					if( $ticket_link ) echo( '<a href="' . $ticket_link . '" class="button">Tickets</a>' );
-				
-					edit_post_link('edit', '<span class="">', '</span>'); 
+					<?php 
+						
+						echo( '<a href="' . get_the_permalink() . '" class="button">Info</a>' );
 					
-				?>
-				
-			</nav>
+						if( $ticket_link ) echo( '<a href="' . $ticket_link . '" class="button">Tickets</a>' );
+					
+						edit_post_link('edit', '<span class="">', '</span>'); 
+						
+					?>
+					
+				</nav>
+			
+			<?php endif; ?>
 			
 		</article>
 		
