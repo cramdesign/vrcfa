@@ -1,0 +1,72 @@
+/* Custom Login Styles */
+
+html, body {
+	background: #fff !important;
+}
+
+#login {
+	width: 400px;
+}
+
+h1 {	
+	width: auto !important;
+	height: 200px !important;
+	background: url(images/logo.png) no-repeat center !important;
+	background: url(images/vrcfa-logo.svg) no-repeat center !important;
+} 
+
+h1 a {	
+	display: none !important;
+}
+
+#login_error, .login .message {
+	margin: 1em 0;
+	padding: 1em;
+	border-radius: 0;
+	border: 1px solid #444;
+	background: #555;
+	color: #fff;
+}
+
+.login form {
+	background: #eee;
+	box-shadow: none;
+	border-radius: 0;
+	border: 1px solid #ededed;
+	margin: 0;
+}
+
+input {
+	border-radius: 0 !important;
+}
+
+input.button-primary, button.button-primary, a.button-primary {
+	background: #444 !important;
+	border: none !important;
+}
+
+.login p#backtoblog,
+.login p#nav {
+	padding: 2em 0 !important; 
+	margin: 0 !important;
+	width: 50%;
+	float: left;
+}
+
+.login p#nav {
+	float: right;
+	text-align: right;
+}
+
+.login p#backtoblog a,
+.login p#nav a {
+	color: #555 !important;
+	text-shadow: 0 0 2px rgba(0,0,0,0.1);
+	text-decoration: none;
+}
+
+.login p#backtoblog a:hover,
+.login p#nav a:hover {
+	color: #333 !important; 
+	text-decoration: underline;
+}

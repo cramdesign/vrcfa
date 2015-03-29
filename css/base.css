@@ -1,0 +1,321 @@
+/* debug colors 
+------------------------------------------ */
+.debug .row {
+	background-color: lightpink;
+	background-color: rgba(255,0,0,0.05);
+	box-shadow: inset 0 0 0 1px rgba(255,0,0,0.15);
+}
+
+.debug .item, .debug aside, .debug section {
+	box-shadow: inset 0 0 0 1px rgba(0,255,0,0.15);
+}
+
+.debug .grid {
+	box-shadow: inset 0 0 0 1px rgba(0,255,0,0.15);
+}
+
+
+
+/* setup
+------------------------------------------ */
+
+/* universal box-sizing */
+*, *:before, *:after {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+/* define and set horizontal bands */
+.row, .wrap {
+	max-width: 1100px;
+	width: 88%;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+}
+
+.wrap {
+	max-width: 1500px;
+	width: auto;
+	overflow-x: hidden;
+}
+
+.row.wide, .wrap.wide {
+	max-width: none;
+}
+
+/* nested rows should fill container */
+.row .row {
+	width: auto;
+}
+
+/* contain and clear floated elements inside certain elements */
+.row:before, .row:after,
+.grid:before, .grid:after,
+.wrap:before, .wrap:after,
+.clear:before, .clear:after {
+	display: table;
+	content: "";
+	clear: both;
+}
+
+
+
+/* slats
+------------------------------------------ */
+
+.slat {
+	overflow: hidden;
+}
+
+.slat figure {
+	margin-bottom: 1em;
+}
+
+.slat + .slat {
+	margin-top: 4em;
+}
+
+@media ( min-width:500px ) {
+	
+	.slat > header, .slat > figure {
+		float: left;
+		margin-right: 4%;
+	}
+	
+	.slat figure {
+		max-width: 40%;
+	}
+	
+	.slat article {
+		overflow: hidden;
+	}
+	
+}
+
+@media ( max-width:500px ) {
+
+}
+
+.grid .slat figure {
+	float: none;
+	max-width: none;
+	margin-right: 0;
+}
+
+.grid .slat + .slat {
+	margin-top: 0;
+}
+
+
+
+/* Simple Resposive Grid 
+-------------------------------------------------------------- */
+
+.grid {
+	margin-left: -2em;
+	margin-right: -2em;
+}
+
+.grid:before, .grid:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.grid img {
+	width: 100%;
+	vertical-align: bottom;
+}
+
+.grid > * {
+	margin: 0;
+	padding: 2em;
+	position: relative;
+}
+
+@media ( min-width:600px ) and ( max-width:900px ) {
+
+	.grid > * {
+		float: left;
+		width: 50%;
+	}
+
+	.grid > :nth-child(2n+1) {
+		clear: left;
+	}
+
+}
+
+@media ( min-width:900px )  {
+
+	.grid > * {
+		float: left;
+		width: 33.3333%;
+	}
+
+	.grid > :nth-child(3n+1) {
+		clear: left;
+	}
+
+}
+
+
+
+/* WordPress Gallery styles
+-------------------------------------------------------------- */
+
+.gallery {
+	margin-left: -0.5em;
+	margin-right: -0.5em;
+}
+
+.gallery:before, .gallery:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.gallery img {
+	width: 100%;
+	vertical-align: bottom;
+}
+
+.gallery > * {
+	margin: 0;
+	float: left;
+	width: 50%;
+	padding: 0.5em;
+	position: relative;
+}
+
+.gallery-columns-1 > * {
+    width: 100%;
+    float: none;
+}
+
+@media (min-width:600px) {
+
+	.gallery-columns-2 > * {
+		width: 50%;
+	}
+	
+	.gallery-columns-3 > * {
+		width: 33.333%;
+	}
+	
+	.gallery-columns-4 > * {
+		width: 25%;
+	}
+	
+	.gallery-columns-5 > * {
+	    width: 20%
+	}
+	
+	.gallery-columns-6 > * {
+	    width: 16.6667%
+	}
+	
+	.gallery-columns-7 > * {
+	    width: 14.2857%
+	}
+	
+	.gallery-columns-8 > * {
+	    width: 12.5%
+	}
+	
+	.gallery-columns-9 > * {
+	    width: 11.1111%
+	}
+	
+	.gallery-columns-2 > :nth-child(2n+1),
+	.gallery-columns-3 > :nth-child(3n+1),
+	.gallery-columns-4 > :nth-child(4n+1),
+	.gallery-columns-5 > :nth-child(5n+1),
+	.gallery-columns-6 > :nth-child(6n+1),
+	.gallery-columns-7 > :nth-child(7n+1),
+	.gallery-columns-8 > :nth-child(8n+1),
+	.gallery-columns-9 > :nth-child(9n+1) {
+		clear: left;
+	}
+
+}
+
+@media (max-width:600px) {
+	
+	.gallery > :nth-child(2n+1) {
+		clear: left;
+	}
+	
+}
+
+.gallery-caption, .wp-caption-text {
+	font-size: 12px;
+	text-align: center;
+}
+
+.wp-caption {
+	padding: 0.5em;
+	background: #fff;
+	box-shadow: 0 0 1px rgba(0,0,0,0.2);
+}
+
+
+
+/* WordPress Stuff 
+------------------------------------------ */
+
+.screen-reader-text {
+	display: none;
+}
+
+.post-edit-link {
+	padding: 1em 0;
+	display: inline-block;
+	text-transform: uppercase;
+	font-size: 0;
+}
+
+.post-edit-link:before {
+	content: "\f464";
+	font: 400 20px/1 dashicons;
+	vertical-align: middle;
+}
+
+
+
+/* post navigation
+-------------------------------------------------------------- */
+.postnav {
+	font-size: 0.85em;
+	border-top: 1px solid #ddd;
+	padding: 2em 0;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	text-align: center;
+}
+
+.postnav .page-numbers {
+	padding: 0.5em 0.75em;
+	border: 1px solid #ddd;
+}
+
+.postnav .page-numbers + .page-numbers {
+	margin-left: 0.5em;
+}
+
+.postnav .current {
+	border: 1px solid #ccc;
+	background-color: #eee;
+}
+
+.postnav .prev, .postnav .next {
+	border: none;
+	padding: 0.5em 0;
+}
+
+
+
+
+

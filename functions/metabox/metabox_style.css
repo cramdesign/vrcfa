@@ -1,0 +1,53 @@
+#poststuff .postbox[id*="_meta_box"] .inside {
+	margin: 0;
+	padding: 0;
+}
+
+table.meta {
+	border-collapse: collapse;
+	width: 100%;
+	margin: 0;
+	font-size: 13px;
+}
+
+table.meta th, table.meta td {
+	padding: 1em;
+	text-align: left;
+	vertical-align: top;
+	box-sizing: border-box;
+}
+
+table.meta tr + tr {
+	border-top: 1px solid #ddd;
+}
+
+table.meta th {
+	width: 25%;
+	background: #eee;
+}
+
+table.meta input[type="text"], table.meta textarea {
+	width: 100%;
+}
+
+table.meta textarea {
+	height: 150px;
+	resize: vertical;
+}
+
+table.meta .message td {
+	font-style: italic;
+}
+
+table.meta .hr {
+	border-top-width: 1em;
+}
+
+table.meta .sectionbreak td.small {
+	padding: 0.5em 0 0 0;
+}
+
+table.meta .error {
+	background: #e14d43;
+	color: #fff;
+}
