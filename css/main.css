@@ -761,6 +761,14 @@ input.search {
 .sectionmenu ul li.current_page_item a {
 	background: #ccc;
 	color: #777;
+	position: relative;
+}
+
+.sectionmenu ul li.current_page_item a:before {
+	display: block;
+	content: "\025B8";
+	position: absolute;
+	left: 0;
 }
 
 
