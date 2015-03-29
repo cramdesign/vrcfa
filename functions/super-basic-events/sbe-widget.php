@@ -66,6 +66,11 @@ class Upcoming_Events extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'show_excerpt' ); ?>"><?php _e( 'Show excerpt, if available?' ); ?></label> 
         </p>
         
+		<p>
+			<input id="<?php echo $this->get_field_id( 'show_feature' ); ?>" name="<?php echo $this->get_field_name( 'show_feature' ); ?>" type="checkbox" value="1" <?php checked( '1', $instance['show_feature'] ); ?>/>
+			<label for="<?php echo $this->get_field_id( 'show_feature' ); ?>"><?php _e( 'Show featured image, if available?' ); ?></label> 
+        </p>
+        
 		<?php
 	}
 
@@ -84,6 +89,7 @@ class Upcoming_Events extends WP_Widget {
 		$instance['offset'] 		= strip_tags( $new_instance['offset'] );
 		$instance['number_events'] 	= $new_instance['number_events'];
 		$instance['show_excerpt'] 	= $new_instance['show_excerpt'];
+		$instance['show_feature'] 	= $new_instance['show_feature'];
 
 		return $instance;
 		
@@ -102,6 +108,7 @@ class Upcoming_Events extends WP_Widget {
 		$offset 		= apply_filters( 'widget_title', $instance['offset'] );
 		$number 		= $instance['number_events'];
 		$show_excerpt 	= $instance['show_excerpt'];
+		$show_feature 	= $instance['show_feature'];
 
 		//Preparing the query for events
 		$meta_quer_args = array(
@@ -147,7 +154,7 @@ class Upcoming_Events extends WP_Widget {
 			echo( '<div class="events">' );
 			while( $upcoming_events->have_posts() ): $upcoming_events->the_post();
 			
-				sbe_list_output( $show_excerpt );
+				sbe_list_output( $show_excerpt, $show_feature );
 						
 			endwhile;
 			echo( '</div><!-- events -->' );
@@ -165,7 +172,7 @@ class Upcoming_Events extends WP_Widget {
 	}
 }
 
-function sbe_list_output( $desc = false, $size = 'thumbnail', $class = 'event slat' ) {
+function sbe_list_output( $desc = false, $feature = true, $size = 'thumbnail', $class = 'event slat' ) {
 
 	$start_date		= get_metabox( 'event-start-date' );
 	$end_date 		= get_metabox( 'event-end-date' );
@@ -177,7 +184,7 @@ function sbe_list_output( $desc = false, $size = 'thumbnail', $class = 'event sl
 		
 		<?php
 			
-			if ( has_post_thumbnail( $post->ID ) ) :
+			if ( has_post_thumbnail( $post->ID ) and $feature ) :
 						
 				echo( '<figure><a href="' . get_the_permalink() . '">' . get_the_post_thumbnail( $post->ID, $size ) . '</a></figure>' );
 			
