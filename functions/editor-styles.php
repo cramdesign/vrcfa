@@ -1,15 +1,16 @@
 <?php
 /*
-Plugin Name: Custom Styles
-Plugin URI: http://www.speckygeek.com
-Description: Add custom styles in your posts and pages content using TinyMCE WYSIWYG editor. The plugin adds a Styles dropdown menu in the visual post editor.
-Based on TinyMCE Kit plug-in for WordPress
-
-http://plugins.svn.wordpress.org/tinymce-advanced/branches/tinymce-kit/tinymce-kit.php
-
-http://wp.tutsplus.com/tutorials/theme-development/adding-custom-styles-in-wordpress-tinymce-editor/
-
-Learn TinyMCE style format options at http://www.tinymce.com/wiki.php/Configuration:formats
+	
+	Plugin Name: Custom Styles
+	Plugin URI: http://www.speckygeek.com
+	Description: Add custom styles in your posts and pages content using TinyMCE WYSIWYG editor. The plugin adds a Styles dropdown menu in the visual post editor.
+	Based on TinyMCE Kit plug-in for WordPress
+	
+	http://plugins.svn.wordpress.org/tinymce-advanced/branches/tinymce-kit/tinymce-kit.php
+	
+	http://wp.tutsplus.com/tutorials/theme-development/adding-custom-styles-in-wordpress-tinymce-editor/
+	
+	Learn TinyMCE style format options at http://www.tinymce.com/wiki.php/Configuration:formats
 
 */
 
