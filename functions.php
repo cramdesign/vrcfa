@@ -1,7 +1,7 @@
 <?php
 /* Load support files 
 -------------------------------------------------------------- */
-require_once( 'functions/utility.php' );
+require_once( 'functions/pricing.php' );
 require_once( 'functions/customizer.php' );
 require_once( 'functions/editor-styles.php' );
 require_once( 'functions/super-basic-events/sbe-events.php' );

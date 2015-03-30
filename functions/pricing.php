@@ -61,53 +61,51 @@ function sbe_render_ticket_pricing() {
 	
 	
 	if ( $standard_lower ) :
-
-		echo '<div class="meta pricing">';
 		
 		?>
-		<table>
-			
-			<?php if ( $caption ) : ?>
-			<caption><?php echo $caption; ?></caption>
-			<?php endif; ?>
-			
-			<thead>
-				<tr>
-					<th>Tickets</th>
-					<th>Lower Tier</th>
+		<div class="meta pricing">
+			<table>
+				
+				<?php if ( $caption ) : ?>
+				<caption><?php echo $caption; ?></caption>
+				<?php endif; ?>
+				
+				<thead>
+					<tr>
+						<th>Tickets</th>
+						<th>Lower Tier</th>
+						
+						<?php if ( $standard_upper || $senior_upper || $student_upper ) : ?>
+						<th>Upper Tier</th>
+						<?php endif; ?>
+	
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>Standard</th>
+						<?php price( $standard_lower, $standard_upper ); ?>
+					</tr>
 					
-					<?php if ( $standard_upper || $senior_upper || $student_upper ) : ?>
-					<th>Upper Tier</th>
+					<?php if ( $senior_lower ) : ?>
+					<tr>
+						<th>Seniors</th>
+						<?php price( $senior_lower, $senior_upper ); ?>
+					</tr>
 					<?php endif; ?>
-
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th>Standard</th>
-					<?php price( $standard_lower, $standard_upper ); ?>
-				</tr>
-				
-				<?php if ( $senior_lower ) : ?>
-				<tr>
-					<th>Seniors</th>
-					<?php price( $senior_lower, $senior_upper ); ?>
-				</tr>
-				<?php endif; ?>
-				
-				<?php if ( $student_lower ) : ?>
-				<tr>
-					<th>Students</th>
-					<?php price( $student_lower, $student_upper ); ?>
-				</tr>
-				<?php endif; ?>
-				
-			</tbody>
-		</table>
+					
+					<?php if ( $student_lower ) : ?>
+					<tr>
+						<th>Students</th>
+						<?php price( $student_lower, $student_upper ); ?>
+					</tr>
+					<?php endif; ?>
+					
+				</tbody>
+			</table>
+		</div><!-- meta pricing -->
 		<?php
 			
-	echo '</div><!-- meta pricing -->';
-
 	endif;
 	
 }
