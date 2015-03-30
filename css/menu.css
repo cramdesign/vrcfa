@@ -1,6 +1,6 @@
 /* 
 	Name: drop menu 
-	Version: 1.2.2
+	Version: 1.2.3
 */
 
 .menu, .menu ul {
@@ -89,12 +89,8 @@
 }
 
 @media (max-width:800px) {
-
-	.drop.menu {
-/* 		background: #eee; */
-	}
 	
-	.drop.menu li {
+	.menu li {
 		display: block;
 	}
 	
@@ -102,29 +98,30 @@
 		background: rgba(0,0,0,0.1);
 	}
 	
-	.drop.menu > li > a {
+	.menu > li > a {
 		font-weight: bold;
 		border-top: 1px solid rgba(0,0,0,0.1);
 	}
 	
-	.drop.menu ul {
+	.menu ul {
 		background: none;
 		position: static;
 		visibility: visible;
 		opacity: 1;
 		margin-bottom: 1em;
 	}
-	
-	.drop.menu ul ul {
+		
+	.menu ul ul {
 		margin-bottom: 0;
+		margin-left: 1em;
 	}
 	
-	.drop.menu li li a {
+	.menu li li a {
 		padding-top: 0.5em;
 		padding-bottom: 0.5em;
 	}
 	
-	.drop.menu li li a:before {
+	.menu li li a:before {
 		content: '\2022\00a0';
 	}
 
@@ -148,7 +145,7 @@ input.toggle, label.toggle {
 label.toggle:before {
 	content: "\2630\00A0";
 	font-weight: normal;
-		text-rendering: geometricPrecision;
+	text-rendering: geometricPrecision;
 }
 
 @media (max-width: 800px) {
