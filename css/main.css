@@ -105,17 +105,13 @@ medium blue: #7791A5
 	height: 130px;
 	max-width: 390px;
 	background: url(images/logo.png) no-repeat left center;
-	background-image: url(images/vrcfa-logo.svg), none;
+	background-image: url(images/vrcfa-logo.svg);
 	background-size: contain;
 	font-size: 0;
 	text-indent: -999em;
 }
 
 @media (-webkit-min-device-pixel-ratio : 1.5), (min-device-pixel-ratio : 1.5) {
-
-	#logo a {
-/* 		background-image: url(images/logo-2x.png); */
-	}
 
 }
 
@@ -141,6 +137,11 @@ medium blue: #7791A5
 
 	#logo a {
 		background-position: left center;
+	}
+	
+	#menu {
+		width: 60%;
+		float: left;
 	}
 
 }

@@ -1,6 +1,6 @@
 /* 
 	Name: drop menu 
-	Version: 1.2.3
+	Version: 1.2.4
 */
 
 .menu, .menu ul {
@@ -90,7 +90,7 @@
 
 @media (max-width:800px) {
 	
-	.menu li {
+	.drop.menu li {
 		display: block;
 	}
 	
@@ -103,7 +103,7 @@
 		border-top: 1px solid rgba(0,0,0,0.1);
 	}
 	
-	.menu ul {
+	.menu ul, .drop.menu ul {
 		background: none;
 		position: static;
 		visibility: visible;
