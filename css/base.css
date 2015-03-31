@@ -1,20 +1,3 @@
-/* debug colors 
------------------------------------------- */
-.debug .row {
-	background-color: lightpink;
-	background-color: rgba(255,0,0,0.05);
-	box-shadow: inset 0 0 0 1px rgba(255,0,0,0.15);
-}
-
-.debug .item, .debug aside, .debug section {
-	box-shadow: inset 0 0 0 1px rgba(0,255,0,0.15);
-}
-
-.debug .grid {
-	box-shadow: inset 0 0 0 1px rgba(0,255,0,0.15);
-}
-
-
 
 /* setup
 ------------------------------------------ */
@@ -54,7 +37,9 @@
 .row:before, .row:after,
 .grid:before, .grid:after,
 .wrap:before, .wrap:after,
-.clear:before, .clear:after {
+.clear:before, .clear:after,
+.slat:before, .slat:after,
+.slats > *:before, .slats > *:after {
 	display: table;
 	content: "";
 	clear: both;
@@ -65,37 +50,34 @@
 /* slats
 ------------------------------------------ */
 
-.slat {
-	overflow: hidden;
-}
-
-.slat figure {
+.slat > figure,
+.slats > * > figure {
 	margin-bottom: 1em;
 }
 
-.slat + .slat {
+.slat + .slat,
+.slats > * + * {
 	margin-top: 4em;
 }
 
 @media ( min-width:500px ) {
 	
-	.slat > header, .slat > figure {
+	.slat > header, .slat > figure,
+	.slats > * > header, .slats > * > figure {
 		float: left;
 		margin-right: 4%;
 	}
 	
-	.slat figure {
+	.slat > figure,
+	.slats > * > figure {
 		max-width: 40%;
 	}
 	
-	.slat article {
+	.slat article,
+	.slats > * article {
 		overflow: hidden;
 	}
 	
-}
-
-@media ( max-width:500px ) {
-
 }
 
 .grid .slat figure {

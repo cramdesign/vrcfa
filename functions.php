@@ -11,7 +11,7 @@ require_once( 'functions/super-basic-events/sbe-events.php' );
 
 /* Register widget areas
 -------------------------------------------------------------- */
-if (!function_exists('custom_theme_widgets_init')) : function custom_theme_widgets_init() {
+if ( !function_exists( 'custom_theme_widgets_init' ) ) : function custom_theme_widgets_init() {
 	
 	register_sidebar(array(
 		'name'			=> 'Home Widgets 1',
@@ -71,14 +71,14 @@ add_action( 'widgets_init', 'custom_theme_widgets_init' );
 
 /* Register javascript and stylesheets
 -------------------------------------------------------------- */
-if (!function_exists('custom_theme_scripts')) : function custom_theme_scripts() {
+if ( !function_exists( 'custom_theme_scripts' ) ) : function custom_theme_scripts() {
 
 
 	// load comments stylesheet and javascript only if it is needed
 	if ( is_singular() and ( comments_open() or 0 != get_comments_number() ) ) : 
 		
-			wp_enqueue_style ( 'comments', get_template_directory_uri() . '/css/comments.css' );
-			if ( get_option('thread_comments') ) wp_enqueue_script( 'comment-reply' );
+		wp_enqueue_style ( 'comments', get_template_directory_uri() . '/css/comments.css' );
+		if ( get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' );
 			
 	endif;
 
@@ -92,7 +92,7 @@ if (!function_exists('custom_theme_scripts')) : function custom_theme_scripts() 
 
 
 } endif;
-add_action('wp_enqueue_scripts', 'custom_theme_scripts', 5);
+add_action( 'wp_enqueue_scripts', 'custom_theme_scripts', 5 );
 
 
 

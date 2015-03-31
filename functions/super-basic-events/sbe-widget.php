@@ -144,26 +144,18 @@ class Upcoming_Events extends WP_Widget {
 		//Preparing to show the events
 		echo $before_widget;
 		
-		if ( $title ) : 
-		
-		?>
-		
-		<header>
-			<?php echo $before_title . $title . $after_title; ?>
-		</header>
-		
-		<?php 
-			
-		endif;
+		if( $title ) echo( '<header>' . $before_title . $title . $after_title . '</header>' ); 
 				
 		if( $upcoming_events->have_posts() ) :
 		
-			echo( '<div class="events">' );
-			while( $upcoming_events->have_posts() ): $upcoming_events->the_post();
+			echo( '<div class="events slats">' );
+			
+			while( $upcoming_events->have_posts() ) : $upcoming_events->the_post();
 			
 				sbe_list_output( $show_excerpt, $show_feature, $show_buttons );
 						
 			endwhile;
+			
 			echo( '</div><!-- events -->' );
 			
 		else : 
@@ -179,7 +171,7 @@ class Upcoming_Events extends WP_Widget {
 	}
 }
 
-function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size = 'thumbnail', $class = 'event slat' ) {
+function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size = 'thumbnail', $class = 'event' ) {
 
 	$start_date		= get_metabox( 'event-start-date' );
 	$end_date 		= get_metabox( 'event-end-date' );
@@ -187,7 +179,7 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 	
 	?>
 	
-	<div class="<?php echo $class; ?>">
+	<div class="<?php echo( $class ); ?>">
 		
 		<?php
 			
@@ -195,7 +187,7 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 						
 				echo( '<figure><a href="' . get_the_permalink() . '">' . get_the_post_thumbnail( $post->ID, $size ) . '</a></figure>' );
 			
-			endif; 
+			endif;
 		
 		?>
 		
@@ -205,10 +197,10 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 
 			<p class="meta date">
 				<strong><?php echo date_i18n( get_option( 'date_format' ), $start_date ); ?></strong> 
-				<?php if ($end_date != $start_date ) echo " &ndash; " . date_i18n( get_option( 'date_format' ), $end_date ); ?>
+				<?php if ( $end_date != $start_date ) echo " &ndash; " . date_i18n( get_option( 'date_format' ), $end_date ); ?>
 			</p>
 			
-			<?php if ( $desc and has_excerpt() ) echo( '<div class="content">' . get_the_excerpt() . '</div>' ); ?>
+			<?php if ( $desc and has_excerpt() ) echo( '<p class="content excerpt">' . get_the_excerpt() . '</p>' ); ?>
 			
 			<?php if( $buttons ) : ?>
 			
@@ -238,7 +230,9 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 
 
 function sbe_register_widget() {
+	
 	register_widget( 'Upcoming_Events' );
+
 }
 add_action( 'widgets_init', 'sbe_register_widget' );
 

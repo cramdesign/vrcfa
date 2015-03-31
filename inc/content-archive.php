@@ -23,7 +23,7 @@
 		<?php if ( ! is_front_page() ) : ?>
 		
 			<footer>
-				<p><small>Posted in <?php the_category(', ') ?></small></p>
+				<p><small>Posted in <?php the_category( ', ' ) ?></small></p>
 			</footer>
 			
 		<?php endif; ?>
