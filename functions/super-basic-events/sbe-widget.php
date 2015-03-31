@@ -50,7 +50,7 @@ class Upcoming_Events extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'number_events' ); ?>"><?php _e( 'Number of events to show', 'upcoming-events' ); ?></label>
 			<select id="<?php echo $this->get_field_id( 'number_events' ); ?>" name="<?php echo $this->get_field_name( 'number_events' ); ?>" class="widefat">
-				<?php for ( $i = 1; $i <= 10; $i++ ): ?>
+				<?php for ( $i = 1; $i <= 10; $i++ ) : ?>
 					<option value="<?php echo $i; ?>" <?php selected( $i, $instance['number_events'], true ); ?>><?php echo $i; ?></option>
 				<?php endfor; ?>
 			</select>
@@ -119,24 +119,28 @@ class Upcoming_Events extends WP_Widget {
 
 		//Preparing the query for events
 		$meta_quer_args = array(
+			
 			'relation'		=>	'AND',
 			array(
 				'key'		=>	'event-end-date',
 				'value'		=>	time(),
 				'compare'	=>	'>='
 			)
+			
 		);
 
 		$query_args = array(
+			
 			'post_type'				=>	'events',
 			'posts_per_page'		=>	$number,
 			'offset'				=>	$offset,
 			'post_status'			=>	'publish',
 			'ignore_sticky_posts'	=>	true,
-			'meta_key'				=>	'event-start-date',
-			'orderby'				=>	'meta_value_num',
 			'order'					=>	'ASC',
-			'meta_query'			=>	$meta_quer_args
+			'meta_query'			=>	$meta_quer_args,
+			'meta_key'				=>	'event-start-date',
+			'orderby'				=>	'meta_value_num'
+			
 		);
 
 		$upcoming_events = new WP_Query( $query_args );
@@ -172,6 +176,8 @@ class Upcoming_Events extends WP_Widget {
 }
 
 function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size = 'thumbnail', $class = 'event' ) {
+	
+	global $post;
 
 	$start_date		= get_metabox( 'event-start-date' );
 	$end_date 		= get_metabox( 'event-end-date' );
@@ -196,7 +202,7 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 			<?php the_title( '<h4 class="title"><a href="' . get_the_permalink() . '">', '</a></h4>' ); ?>
 
 			<p class="meta date">
-				<strong><?php echo date_i18n( get_option( 'date_format' ), $start_date ); ?></strong> 
+				<strong><?php echo( date_i18n( get_option( 'date_format' ), $start_date ) ); ?></strong> 
 				<?php if ( $end_date != $start_date ) echo " &ndash; " . date_i18n( get_option( 'date_format' ), $end_date ); ?>
 			</p>
 			
