@@ -4,10 +4,10 @@
 	<nav>
 		<ul id="power-menu" class="menu">
 			<li><a href="http://shawnee.edu/">Shawnee.edu</a></li>
-			<li><a href="#">Directory</a></li>
-			<li><a href="#">Webmail</a></li>
-			<li><a href="#">MySSU</a></li>
-			<li><a href="#">Offices</a></li>
+			<li><a href="http://shawnee.edu/information/directory.aspx">Directory</a></li>
+			<li><a href="http://shawnee.edu/offices/information-technology-services/email-access.aspx">Webmail</a></li>
+			<li><a href="https://myssu.shawnee.edu/ics/">MySSU</a></li>
+			<li><a href="http://shawnee.edu/offices/">Offices</a></li>
 		</ul>
 	</nav>
 	

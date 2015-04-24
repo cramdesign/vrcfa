@@ -15,6 +15,7 @@ function cram_customize_register( $wp_customize ) {
 				
 	            $dropdown = wp_dropdown_categories( array(
 		                'taxonomy'			=> 'sbe_category',
+						'hide_empty'		=> false,
 	                    'name'              => '_customize-dropdown-categories-' . $this->id,
 	                    'echo'              => 0,
 	                    'show_option_none'  => 'Select category...',

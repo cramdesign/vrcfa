@@ -28,6 +28,7 @@
 			endwhile; endif; 
 			
 			if( ! $layout ) $layout = 'slats';
+			if( ! $desc ) $desc = false;
 			
 		?>
 				
@@ -72,7 +73,7 @@
 					while ( $query->have_posts() ) : $query->the_post();
 		
 						// function to output the data found in sbe-widget.php
-						sbe_list_output( true, 'thumbnail' );
+						sbe_list_output( $desc, 'thumbnail' );
 		
 					endwhile;
 								

@@ -100,12 +100,6 @@
 	margin-right: -2em;
 }
 
-.grid:before, .grid:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
 .grid img {
 	width: 100%;
 	vertical-align: bottom;
@@ -115,6 +109,10 @@
 	margin: 0;
 	padding: 2em;
 	position: relative;
+}
+
+.grid > * > figure {
+	margin-bottom: 1em;
 }
 
 @media ( min-width:600px ) and ( max-width:900px ) {

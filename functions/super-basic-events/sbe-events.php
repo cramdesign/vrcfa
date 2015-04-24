@@ -173,10 +173,12 @@ function sbe_render_event_info_metabox( $post ) {
 	
 
 	//if there is previously saved value then retrieve it, else set it to the current time
-	$start_date = ! empty( $start_date ) ? $start_date : time();
+	$start_date = empty( $start_date ) ? time() : $start_date;
 
 	//we assume that if the end date is not present, event ends on the same day
-	$end_date = ! empty( $end_date ) ? $end_date : $start_date;
+	$end_date = empty( $end_date ) ? $start_date : $end_date;
+	
+	if( $end_date < $start_date ) $end_date = $start_date;
 
 	?>
 	
