@@ -146,6 +146,19 @@ medium blue: #7791A5
 
 }
 
+#menu .toggle {
+	margin-top: 2em;
+}
+
+@media (min-width:800px) {
+	
+	#menu > ul > li:hover > a {
+		background: #2267a7;
+		color: #fff;
+	}
+
+}
+
 
 
 /* #hero
@@ -696,6 +709,7 @@ input.search {
 }
 
 
+
 /* widgets
 ------------------------------------------ */
 
@@ -711,72 +725,6 @@ input.search {
 	border-top: 4px solid #7791A5;
 	padding-top: 2em;
 }
-
-
-
-
-
-/* sectionmenu
--------------------------------------------------------------- */
-
-.sectionmenu {
-	margin: 2em 0;
-}
-
-@media ( min-width: 720px ) {
-	
-	.sectionmenu {
-		float: right;
-		margin-left: 4em;
-		margin-top: 0;
-		margin-bottom: 2em;
-		max-width: 18em;
-	}
-	
-	.sectionmenu + * {
-		overflow: hidden;
-	}
-	
-}
-
-.sectionmenu ul li {
-	float: none;
-	display: block;
-	margin: 0;
-	margin-bottom: 1px;
-}
-
-.sectionmenu ul li a {
-	display: block;
-	color: #999;
-	padding: 0.75em 1em;
-	background: #ddd;
-}
-
-.sectionmenu ul li:first-child a {
-	background: #aaa;
-	color: #fff;
-	font-weight: bold;
-}
-
-.sectionmenu ul li.current_page_item a {
-	background: #ccc;
-	color: #777;
-	position: relative;
-}
-
-.sectionmenu ul li.current_page_item a:before {
-	display: block;
-	content: "\025B8";
-	position: absolute;
-	left: 0;
-}
-
-
-
-
-
-
 
 
 
