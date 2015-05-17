@@ -156,7 +156,9 @@ function sbe_render_event_info_metabox( $post ) {
 
 	//get previously saved meta values (if any)
 	$start_date			= get_metabox( 'event-start-date' );
+	$start_time			= get_metabox( 'event-start-time' );
 	$end_date 			= get_metabox( 'event-end-date' );
+	$end_time			= get_metabox( 'event-end-time' );
 	$ticket_link 		= get_metabox( 'event-ticket-link' );
 	
 	$standard_lower		= get_metabox( 'event-ticket-standard-lower' );
@@ -188,7 +190,8 @@ function sbe_render_event_info_metabox( $post ) {
 				<label for="sbe-start-date">Event Start Date:</label>
 			</th>
 			<td>
-				<input type="date" id="sbe-start-date" name="sbe-start-date" class="sbe-date-input" value="<?php echo date( 'F d, Y', $start_date ); ?>" placeholder="Format: February 7, 2014">
+				<input type="date" id="sbe-start-date" name="sbe-start-date" class="sbe-date-input half" value="<?php echo date( 'F d, Y', $start_date ); ?>" placeholder="Format: February 7, 2014">
+				<input type="text" id="sbe-start-time" name="sbe-start-time" class="half" value="<?php echo $start_time; ?>" placeholder="Starting Time">
 			</td>
 		</tr>
 		<tr>
@@ -196,7 +199,8 @@ function sbe_render_event_info_metabox( $post ) {
 				<label for="sbe-end-date">Event End Date:</label>
 			</th>
 			<td>
-				<input type="date" id="sbe-end-date" name="sbe-end-date" class="sbe-date-input" value="<?php echo date( 'F d, Y', $end_date ); ?>" placeholder="Format: February 7, 2014">
+				<input type="date" id="sbe-end-date" name="sbe-end-date" class="sbe-date-input half" value="<?php echo date( 'F d, Y', $end_date ); ?>" placeholder="Format: February 7, 2014">
+				<input type="text" id="sbe-end-time" name="sbe-end-time" class="half" value="<?php echo $end_time; ?>" placeholder="Ending Time">
 			</td>
 		</tr>
 		<tr>
@@ -324,7 +328,7 @@ add_action( 'wp_enqueue_scripts', 'sbe_widget_style' );
 function sbe_save_event_info( $post_id ) {
 
 	//checking if the post being saved is an 'event'; if not, then return
-	if ( isset( $_POST['post_type'] ) && 'events' != $_POST['post_type'] ) return;
+	if( isset( $_POST['post_type'] ) && 'events' != $_POST['post_type'] ) return;
 
 	//checking for the 'save' status
 	$is_autosave = wp_is_post_autosave( $post_id );
@@ -332,50 +336,60 @@ function sbe_save_event_info( $post_id ) {
 	$is_valid_nonce = ( isset( $_POST['sbe-event-info-nonce'] ) && ( wp_verify_nonce( $_POST['sbe-event-info-nonce'], basename( __FILE__ ) ) ) ) ? true : false;
 
 	//exit depending on the save status or if the nonce is not valid
+	
 	if ( $is_autosave || $is_revision || ! $is_valid_nonce ) return;
 
 	//checking for the values and performing necessary actions
-	if ( isset( $_POST['sbe-start-date'] ) ) {
+	
+	if( isset( $_POST['sbe-start-date'] ) ) {
 		update_post_meta( $post_id, 'event-start-date', strtotime( $_POST['sbe-start-date'] ) );
 	}
 
-	if ( isset( $_POST['sbe-end-date'] ) ) {
+	if( isset( $_POST['sbe-start-time'] ) ) {
+		update_post_meta( $post_id, 'event-start-time', sanitize_text_field( $_POST['sbe-start-time'] ) );
+	}
+
+	if( isset( $_POST['sbe-end-date'] ) ) {
 		update_post_meta( $post_id, 'event-end-date', strtotime( $_POST['sbe-end-date'] ) );
 	}
 
-	if ( isset( $_POST['sbe-ticket-link'] ) ) {
+	if( isset( $_POST['sbe-end-time'] ) ) {
+		update_post_meta( $post_id, 'event-end-time', sanitize_text_field( $_POST['sbe-end-time'] ) );
+	}
+
+	if( isset( $_POST['sbe-ticket-link'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-link', sanitize_text_field( $_POST['sbe-ticket-link'] ) );
 	}
 	
-	if ( isset( $_POST['sbe-ticket-standard-lower'] ) ) {
+	if( isset( $_POST['sbe-ticket-standard-lower'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-standard-lower', sanitize_text_field( $_POST['sbe-ticket-standard-lower'] ) );
 	}
 	
-	if ( isset( $_POST['sbe-ticket-standard-upper'] ) ) {
+	if( isset( $_POST['sbe-ticket-standard-upper'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-standard-upper', sanitize_text_field( $_POST['sbe-ticket-standard-upper'] ) );
 	}
 	
-	if ( isset( $_POST['sbe-ticket-senior-lower'] ) ) {
+	if( isset( $_POST['sbe-ticket-senior-lower'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-senior-lower', sanitize_text_field( $_POST['sbe-ticket-senior-lower'] ) );
 	}
 	
-	if ( isset( $_POST['sbe-ticket-senior-upper'] ) ) {
+	if( isset( $_POST['sbe-ticket-senior-upper'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-senior-upper', sanitize_text_field( $_POST['sbe-ticket-senior-upper'] ) );
 	}
 	
-	if ( isset( $_POST['sbe-ticket-student-lower'] ) ) {
+	if( isset( $_POST['sbe-ticket-student-lower'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-student-lower', sanitize_text_field( $_POST['sbe-ticket-student-lower'] ) );
 	}
 	
-	if ( isset( $_POST['sbe-ticket-student-upper'] ) ) {
+	if( isset( $_POST['sbe-ticket-student-upper'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-student-upper', sanitize_text_field( $_POST['sbe-ticket-student-upper'] ) );
 	}
 	
-	if ( isset( $_POST['sbe-ticket-caption'] ) ) {
+	if( isset( $_POST['sbe-ticket-caption'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-caption', sanitize_text_field( $_POST['sbe-ticket-caption'] ) );
 	}
 	
-	if ( isset( $_POST['sbe-sponsor'] ) ) {
+	if( isset( $_POST['sbe-sponsor'] ) ) {
 		update_post_meta( $post_id, 'event-sponsor', sanitize_text_field( $_POST['sbe-sponsor'] ) );
 	}
 	
