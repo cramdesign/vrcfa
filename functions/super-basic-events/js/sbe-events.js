@@ -1,5 +1,4 @@
 
-
 var start_date = new Pikaday({
 	field: document.getElementById( 'sbe-start-date' ),
 	format: 'MM dd, yy',
@@ -12,7 +11,9 @@ var start_date = new Pikaday({
 var end_date = new Pikaday({
 	field: document.getElementById( 'sbe-end-date' ),
 	format: 'MM dd, yy',
+/*
 	onSelect: function() {
 		start_date.setMaxDate( this.getDate() );
 	}
+*/
 });

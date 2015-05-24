@@ -191,7 +191,7 @@ function sbe_render_event_info_metabox( $post ) {
 			</th>
 			<td>
 				<input type="date" id="sbe-start-date" name="sbe-start-date" class="sbe-date-input half" value="<?php echo date( 'F d, Y', $start_date ); ?>" placeholder="Format: February 7, 2014">
-				<input type="text" id="sbe-start-time" name="sbe-start-time" class="half" value="<?php echo $start_time; ?>" placeholder="Starting Time">
+				<input type="text" id="sbe-start-time" name="sbe-start-time" class="half" value="<?php echo $start_time; ?>" placeholder="Starting Time. Example: 7:30 pm">
 			</td>
 		</tr>
 		<tr>
@@ -312,7 +312,7 @@ function sbe_widget_style() {
 	if ( is_active_widget( '', '', 'sbe_upcoming_events', true ) ) {
 		
 		$path = str_replace( WP_CONTENT_DIR, WP_CONTENT_URL, dirname( __FILE__ ) );
-		wp_enqueue_style( 'upcoming-events', $path . '/css/upcoming-events.css' );
+		//wp_enqueue_style( 'upcoming-events', $path . '/css/upcoming-events.css' );
 		
 	}
 	

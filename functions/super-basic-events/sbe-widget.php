@@ -198,9 +198,14 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 		?>
 		
 		<article>
-						
-			<?php the_title( '<h4 class="title"><a href="' . get_the_permalink() . '">', '</a></h4>' ); ?>
+			<h4 class="title">	
+				<?php 
 
+					the_title( '<a href="' . get_the_permalink() . '">', '</a>' ); 
+
+				?>
+			</h4>
+			
 			<p class="meta date">
 				<strong><?php echo( date_i18n( get_option( 'date_format' ), $start_date ) ); ?></strong> 
 				<?php if ( $end_date != $start_date ) echo " &ndash; " . date_i18n( get_option( 'date_format' ), $end_date ); ?>
@@ -218,8 +223,8 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 					
 						if( $ticket_link ) echo( '<a href="' . $ticket_link . '" class="button">Tickets</a>' );
 					
-						edit_post_link('edit', '<span class="">', '</span>'); 
-						
+						edit_post_link( 'edit' ); 
+
 					?>
 					
 				</nav>
