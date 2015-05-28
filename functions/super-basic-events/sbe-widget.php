@@ -181,7 +181,10 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 
 	$start_date		= get_metabox( 'event-start-date' );
 	$end_date 		= get_metabox( 'event-end-date' );
+	$custom_link 	= get_metabox( 'event-custom-link' );
 	$ticket_link 	= get_metabox( 'event-ticket-link' );
+	
+	$custom_link ? $the_link = $custom_link : $the_link = get_the_permalink();
 	
 	?>
 	
@@ -191,7 +194,7 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 			
 			if ( has_post_thumbnail( $post->ID ) and $feature ) :
 						
-				echo( '<figure><a href="' . get_the_permalink() . '">' . get_the_post_thumbnail( $post->ID, $size ) . '</a></figure>' );
+				echo( '<figure><a href="' . $the_link . '">' . get_the_post_thumbnail( $post->ID, $size ) . '</a></figure>' );
 			
 			endif;
 		
@@ -201,7 +204,7 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 			<h4 class="title">	
 				<?php 
 
-					the_title( '<a href="' . get_the_permalink() . '">', '</a>' ); 
+					the_title( '<a href="' . $the_link . '">', '</a>' ); 
 
 				?>
 			</h4>
@@ -219,7 +222,8 @@ function sbe_list_output( $desc = false, $feature = true, $buttons = true, $size
 					
 					<?php 
 						
-						echo( '<a href="' . get_the_permalink() . '" class="button">Info</a>' );
+ 						$btn_txt = $custom_link ? "Link" : "Info";
+						echo( '<a href="' . $the_link . '" class="button">' . $btn_txt . '</a>' );
 					
 						if( $ticket_link ) echo( '<a href="' . $ticket_link . '" class="button">Tickets</a>' );
 					

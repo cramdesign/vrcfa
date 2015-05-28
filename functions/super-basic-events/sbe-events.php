@@ -159,6 +159,8 @@ function sbe_render_event_info_metabox( $post ) {
 	$start_time			= get_metabox( 'event-start-time' );
 	$end_date 			= get_metabox( 'event-end-date' );
 	$end_time			= get_metabox( 'event-end-time' );
+
+	$custom_link 		= get_metabox( 'event-custom-link' );
 	$ticket_link 		= get_metabox( 'event-ticket-link' );
 	
 	$standard_lower		= get_metabox( 'event-ticket-standard-lower' );
@@ -201,6 +203,14 @@ function sbe_render_event_info_metabox( $post ) {
 			<td>
 				<input type="date" id="sbe-end-date" name="sbe-end-date" class="sbe-date-input half" value="<?php echo date( 'F d, Y', $end_date ); ?>" placeholder="Format: February 7, 2014">
 				<input type="text" id="sbe-end-time" name="sbe-end-time" class="half" value="<?php echo $end_time; ?>" placeholder="Ending Time">
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<label for="sbe-ticket-link">Custom Link:</label>
+			</th>
+			<td>
+				<input type="text" id="sbe-custom-link" name="sbe-custom-link" value="<?php echo $custom_link; ?>" placeholder="Link to an external page">
 			</td>
 		</tr>
 		<tr>
@@ -357,6 +367,10 @@ function sbe_save_event_info( $post_id ) {
 		update_post_meta( $post_id, 'event-end-time', sanitize_text_field( $_POST['sbe-end-time'] ) );
 	}
 
+	if( isset( $_POST['sbe-custom-link'] ) ) {
+		update_post_meta( $post_id, 'event-custom-link', sanitize_text_field( $_POST['sbe-custom-link'] ) );
+	}
+	
 	if( isset( $_POST['sbe-ticket-link'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-link', sanitize_text_field( $_POST['sbe-ticket-link'] ) );
 	}
