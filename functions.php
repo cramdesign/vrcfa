@@ -2,6 +2,7 @@
 /* Load support files 
 -------------------------------------------------------------- */
 require_once( 'functions/pricing.php' );
+require_once( 'functions/supersimple_shortcodes.php' );
 require_once( 'functions/customizer.php' );
 require_once( 'functions/editor-styles.php' );
 require_once( 'functions/super-basic-events/sbe-events.php' );
@@ -75,10 +76,10 @@ if ( !function_exists( 'custom_theme_scripts' ) ) : function custom_theme_script
 
 
 	// load comments stylesheet and javascript only if it is needed
-	if ( is_singular() and ( comments_open() or 0 != get_comments_number() ) ) : 
+	if ( is_singular() and ( comments_open() or get_comments_number() ) ) : 
 		
-		wp_enqueue_style ( 'comments', get_template_directory_uri() . '/css/comments.css' );
-		if ( get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' );
+			wp_enqueue_style ( 'comments', get_template_directory_uri() . '/css/comments.css' );
+			if ( comments_open() and get_option('thread_comments') ) wp_enqueue_script( 'comment-reply' );
 			
 	endif;
 
@@ -155,7 +156,3 @@ if ( !function_exists( 'custom_theme_features' ) ) : function custom_theme_featu
 } endif;
 add_action( 'after_setup_theme', 'custom_theme_features' );
 
-
-
-
-?>

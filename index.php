@@ -22,9 +22,19 @@
 				endwhile; endif;
 				
 				
-				// if there are more posts than fit on a blog page
-				// include a file to allow for navigation between blog pages
-				get_template_part( 'inc/pagination' );
+				if( is_single() ) :
+				
+					// if on a single post
+					// show links to the next and previous post
+					the_post_navigation();
+					
+				elseif( is_home() ) :
+				
+					// if on the blog page
+					// display page numbers if there are more posts than fit on one page
+					the_posts_pagination();			
+				
+				endif;
 				
 			?>
 		</section>

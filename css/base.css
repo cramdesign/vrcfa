@@ -268,33 +268,44 @@
 
 /* post navigation
 -------------------------------------------------------------- */
-.postnav {
-	font-size: 0.85em;
-	border-top: 1px solid #ddd;
-	padding: 2em 0;
+
+.nav-links {
+	font-size: 0.75em;
+	padding: 3em 0;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	text-align: center;
 }
 
-.postnav .page-numbers {
+.nav-links .page-numbers {
 	padding: 0.5em 0.75em;
 	border: 1px solid #ddd;
 }
 
-.postnav .page-numbers + .page-numbers {
+.nav-links .page-numbers + .page-numbers {
 	margin-left: 0.5em;
 }
 
-.postnav .current {
+.nav-links .current {
 	border: 1px solid #ccc;
 	background-color: #eee;
 }
 
-.postnav .prev, .postnav .next {
+.nav-links .prev, .nav-links .next {
 	border: none;
 	padding: 0.5em 0;
 }
+
+.nav-previous, .nav-next {
+	display: inline-block;
+	padding: 1em;
+}
+
+.nav-next {
+	border-left: 1px solid #ccc;
+}
+
+
 
 
 
