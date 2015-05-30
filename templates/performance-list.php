@@ -5,6 +5,7 @@
 	get_header();
 	
 	$layout = 'slats';
+	$desc = true;
 	
 	include( locate_template( 'inc/performances.php' ) );
 		

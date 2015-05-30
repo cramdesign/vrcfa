@@ -69,7 +69,7 @@
 			<?php 
 				
 				// extra content
-				if( has_excerpt() ) echo( '<div class="meta notes">' . get_the_excerpt() . '</div>' );
+				//if( has_excerpt() ) echo( '<div class="meta notes">' . get_the_excerpt() . '</div>' );
 
 
 				// Venue
