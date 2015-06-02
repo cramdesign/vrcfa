@@ -1,33 +1,46 @@
-<div <?php post_class( 'item' ) ?>>
-
-	<?php
+<main id="content" class="archive events">
+	
+	<header>
 		
-		if( has_post_thumbnail( $post->ID ) ) echo( '<figure>' . get_the_post_thumbnail( $post->ID, 'thumbnail' ) . '</figure>' );
-			
-	?>
-
-	<article>
-
-        <header>
-			
-			<h3 class="title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
-
-        </header>
-
-		<div class="content">
+		<div class="row">
+	
+			<?php if( is_tax() or is_category() ) : ?>
+				
+				<h1 class="category-title title">Event Category: <?php single_cat_title( $prefix = '', $display = true ); ?></h1>
+				<div class="entry-content"><?php echo category_description(); ?></div>
+				
+			<?php else : ?>
+				
+				<h2>Upcoming Events</h2>
+				
+			<?php endif; ?>
 		
-			<?php is_category() || is_archive() || is_home() || is_front_page() ) ? the_excerpt() : the_content(); ?>
+		</div><!-- row -->
+	
+	</header>
+	
+	
+	<section class="row">
+	
+	    <div class="slats">
+	
+		<?php 
 			
-		</div>
-
-		<?php if ( ! is_front_page() ) : ?>
+			if( ! $layout ) $layout = 'slats';
+			if( ! $desc ) $desc = true;
+						
+			while ( have_posts() ) : the_post();
 		
-			<footer>
-				<p><small>Posted in <?php the_category( ', ' ) ?></small></p>
-			</footer>
+				sbe_list_output( true, 'medium' );
 			
-		<?php endif; ?>
+			endwhile; 
+		
+		?>
+	        
+	    </div>
+	
+		<?php the_posts_pagination(); ?>
 
-	</article>
-
-</div><!-- post -->
+	</section><!-- row -->
+	
+</main><!-- content -->

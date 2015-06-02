@@ -1,15 +1,12 @@
-<?php get_header(); ?>
-
-
-<!-- single-events.php -->
-
-
 <?php 
+	
+	get_header();
+
 	
 	// Start the LOOP
 	if ( have_posts() ) : while ( have_posts() ) : the_post();
-	
-	
+
+
 	// Event Variables
 	$start = date_i18n( get_option( 'date_format' ), get_metabox( 'event-start-date' ) );
 	$end = date_i18n( get_option( 'date_format' ), get_metabox( 'event-end-date' ) );
@@ -18,12 +15,17 @@
 	$end_time = get_metabox( 'event-end-time' );
 	
 	$event_date = '<span class="event-start">' . $start . '</span>';
+	
 	if( $start != $end ) $event_date .= ' &ndash; <span class="event-end">' . $end . '</span>';
 	
 	if( $start_time and $end_time ) :
+	
 		$event_date .= ' from <span class="event-start-time">' . $start_time . '</span> to <span class="event-end-time">' . $end_time . '</span>';
+		
 	elseif ( $start_time ) :
+	
 		$event_date .= ' starting at <span class="event-start-time">' . $start_time . '</span>';
+		
 	endif;
 
 ?>
@@ -106,6 +108,12 @@
 </div><!-- row -->
 </section>
 
-<?php endwhile; endif; ?>
+<?php 
+	
+	endwhile; endif;
 
-<?php get_footer(); ?>
+	get_footer(); 
+
+?>
+
+<!-- single-events.php -->

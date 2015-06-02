@@ -24,6 +24,6 @@
 </div><!-- row -->
 </section><!-- #content -->
 
-<?php if ( comments_open() or 0 != get_comments_number() ) comments_template(); ?>
+<?php if ( comments_open() or get_comments_number() ) comments_template(); ?>
 
 <?php get_footer(); ?>
