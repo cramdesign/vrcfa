@@ -1,4 +1,5 @@
 <?php
+
 	
 // comments.php version 1.0.2
 
@@ -104,45 +105,42 @@ if ( post_password_required() ) return;
 
 ?>
 
-<div id="comments-wrap">		
-<div id="comments" class="row comments-area">
-
-	<?php if ( have_comments() ) : ?>
-
-		<h3 class="comments-title"><?php comments_number('No Comments', 'One Comment', '% Comments' );?></h3>
-
-		<ol class="commentlist">
-			
-			<?php wp_list_comments( array( 'callback' => 'my_custom_comment', 'style' => 'ol' ) ); ?>
-			
-		</ol><!-- .commentlist -->
-
-		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-		
-			<nav id="comment-nav-below" class="navigation" role="navigation">
-				<h3 class="assistive-text section-heading">Comment navigation</h3>
-				<?php 
-					
-					previous_comments_link( '<div class="nav-prev">&larr; Older Comments</div>' ); 
-					next_comments_link( '<div class="nav-next">Newer Comments &rarr;</div>' );
+<div id="comments-wrap">
 	
-				?>
-			</nav>
-		
-		<?php endif; ?>
-
-		<?php
+	<div id="comments" class="row comments-area">
+	
+		<?php if ( have_comments() ) : ?>
+	
+			<h3 class="comments-title"><?php comments_number('No Comments', 'One Comment', '% Comments' );?></h3>
+	
+			<ol class="commentlist">
+				
+				<?php wp_list_comments( array( 'callback' => 'my_custom_comment', 'style' => 'ol' ) ); ?>
+				
+			</ol><!-- .commentlist -->
+	
+			<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
 			
-			// If there are no comments and comments are closed, let's leave a note.
-			// But we only want the note on posts and pages that had comments in the first place.
-			if ( ! comments_open() && get_comments_number() ) echo( '<p class="nocomments">Comments are closed.</p>' ); 
+				<nav id="comment-nav-below" class="comment-nav navigation nav-links" role="navigation">
+					<h4 class="screen-reader-text">Comment navigation</h4>
+					<?php paginate_comments_links(); ?>
+				</nav>
 			
-		?>
-		
-	<?php endif; // end if have_comments() ?>
+			<?php endif; ?>
+	
+			<?php
+				
+				// If there are no comments and comments are closed, let's leave a note.
+				// But we only want the note on posts and pages that had comments in the first place.
+				if ( ! comments_open() && get_comments_number() ) echo( '<p class="nocomments">Comments are closed.</p>' ); 
+				
+			?>
+			
+		<?php endif; // end if have_comments() ?>
+	
+		<?php comment_form(); ?>
+	
+	</div><!-- row -->
 
-	<?php comment_form(); ?>
-
-</div><!-- row -->
 </div><!-- comments-wrap -->
 

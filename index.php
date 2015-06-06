@@ -52,5 +52,3 @@
 <?php if ( comments_open() or get_comments_number() ) comments_template(); ?>
 
 <?php get_footer(); ?>
-
-

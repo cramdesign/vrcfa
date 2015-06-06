@@ -63,7 +63,7 @@
 		
 	</header>
 	
-	<?php if( is_page() ) get_template_part( 'inc/nav', 'page' ); ?>
+	<?php if( is_page() ) supersimple_sectionmenu(); ?>
 	
 	<div class="content">
 		

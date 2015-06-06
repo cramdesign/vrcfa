@@ -13,7 +13,7 @@
 
 // List current page and any child pages in a menu
 // [ss_list_pages]
-function supersimple_list_pages() { 
+function supersimple_list_subpages() { 
 
 	global $post; 
 	
@@ -35,4 +35,16 @@ function supersimple_list_pages() {
 	
 }
 
-add_shortcode( 'ss_list_pages', 'supersimple_list_pages' );
+add_shortcode( 'ss_list_pages', 'supersimple_list_subpages' );
+
+
+
+function supersimple_sectionmenu() {
+
+	if( $post->post_parent or count( get_pages( 'child_of=' . $post->ID ) ) ) :
+	
+		echo( '<aside class="sectionmenu"><h4>Section Menu</h4>' . supersimple_list_subpages() . '</aside>' );
+	
+	endif;
+
+}

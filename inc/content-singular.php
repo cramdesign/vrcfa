@@ -1,4 +1,3 @@
-
 <main id="content" class="singular">
 
 	<section <?php post_class( 'row' ) ?>>
@@ -21,7 +20,7 @@
 							<p class="categories"><?php the_category( ', ' ) ?></p>
 						<?php endif; ?>
 						
-						<?php if( get_comments_number() != 0 ) : ?>
+						<?php if( get_comments_number() ) : ?>
 							<p class="comments"><?php comments_popup_link( 'No Comments', '1 Comment', '% Comments' ); ?></p>
 						<?php endif; ?>
 						
@@ -38,11 +37,11 @@
 			
 		<div>
 			
-			<?php if( is_page() ) get_template_part( 'inc/nav', 'page' ); ?>
+			<?php if( is_page() ) supersimple_sectionmenu(); ?>
 			
 			<article class="entry-content"><?php the_content(); ?></article><!-- entry-content -->
 		
-			<?php wp_link_pages('before=<div id="page-links">&after=</div>'); ?>
+			<?php wp_link_pages( 'before=<div id="page-links">&after=</div>' ); ?>
 			
 		</div>
 		
@@ -50,4 +49,3 @@
 	</section><!-- post row -->
 			
 </main><!-- content -->
-		
