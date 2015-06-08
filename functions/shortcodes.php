@@ -41,6 +41,8 @@ add_shortcode( 'ss_list_pages', 'supersimple_list_subpages' );
 
 function supersimple_sectionmenu() {
 
+	global $post; 
+	
 	if( $post->post_parent or count( get_pages( 'child_of=' . $post->ID ) ) ) :
 	
 		echo( '<aside class="sectionmenu"><h4>Section Menu</h4>' . supersimple_list_subpages() . '</aside>' );
