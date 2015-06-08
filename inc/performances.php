@@ -26,10 +26,10 @@
 			
 			// end the Loop
 			endwhile; endif; 
-			
-			if( ! $layout ) $layout = 'slats';
-			if( ! $desc ) $desc = false;
-			
+
+			if( ! isset( $layout ) ) $layout = 'slats';
+			if( ! isset( $desc ) ) $desc = false;
+
 		?>
 				
 		<div class="posts <?php echo( $layout ); ?>">
