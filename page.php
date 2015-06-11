@@ -13,7 +13,7 @@
 	
 		// print the content of the post to the screen
 		// look at the file inc/content.php for how this is formatted
-		get_template_part( 'inc/content', get_post_format() );
+		get_template_part( 'inc/content' );
 		
 		
 		// end the loop... When there are no more posts, stop looking

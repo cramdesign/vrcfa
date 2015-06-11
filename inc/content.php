@@ -53,7 +53,7 @@
 					<p class="categories"><?php the_category(', ') ?></p>
 				<?php endif; ?>
 				
-				<?php if( get_comments_number() != 0 ) : ?>
+				<?php if( get_comments_number() ) : ?>
 					<p class="comments"><?php comments_popup_link( 'No Comments', '1 Comment', '% Comments' ); ?></p>
 				<?php endif; ?>
 				
@@ -63,7 +63,7 @@
 		
 	</header>
 	
-	<?php if( is_page() ) supersimple_sectionmenu(); ?>
+	<?php if( function_exists( 'supersimple_sectionmenu' ) and is_page() ) supersimple_sectionmenu(); ?>
 	
 	<div class="content">
 		
@@ -71,7 +71,9 @@
 			
 			// get the main content from the post
 			the_content();
-			wp_link_pages('before=<div id="page-links">&after=</div>');
+			
+			// provide navigation for multi-page posts
+			wp_link_pages( 'before=<div id="page-links">&after=</div>' );
 			
 		?>
 		

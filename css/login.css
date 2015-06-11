@@ -5,14 +5,15 @@ html, body {
 }
 
 #login {
-	width: 400px;
+	width: auto !important;
+	max-width: 400px !important;
 }
 
 h1 {	
 	width: auto !important;
 	height: 200px !important;
-	background: url(images/logo.png) no-repeat center !important;
 	background: url(images/vrcfa-logo.svg) no-repeat center !important;
+	background-size: contain !important;
 } 
 
 h1 a {	
@@ -61,7 +62,6 @@ input.button-primary, button.button-primary, a.button-primary {
 .login p#backtoblog a,
 .login p#nav a {
 	color: #555 !important;
-	text-shadow: 0 0 2px rgba(0,0,0,0.1);
 	text-decoration: none;
 }
 

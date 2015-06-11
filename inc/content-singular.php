@@ -37,7 +37,7 @@
 			
 		<div>
 			
-			<?php if( is_page() ) supersimple_sectionmenu(); ?>
+			<?php if( function_exists( 'supersimple_sectionmenu' ) and is_page() ) supersimple_sectionmenu(); ?>
 			
 			<article class="entry-content"><?php the_content(); ?></article><!-- entry-content -->
 		
