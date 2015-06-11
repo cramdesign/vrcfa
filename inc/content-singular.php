@@ -35,7 +35,7 @@
 		</header>
 	
 			
-		<div>
+		<div class="content">
 			
 			<?php if( function_exists( 'supersimple_sectionmenu' ) and is_page() ) supersimple_sectionmenu(); ?>
 			
