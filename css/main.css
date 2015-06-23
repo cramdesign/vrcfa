@@ -449,13 +449,16 @@ figure.alignleft {
 
 }
 
-#menu-quick li {
+.widget_nav_menu li {
 	display: block;
+}
+
+.widget_nav_menu li + li {
 	border-top: 1px solid #7791A5;
 }
 
-#menu-quick li a {
-	padding: 0.25em 0;
+.widget_nav_menu li a {
+	padding: 0.5em 0;
 }
 
 /* social menu
@@ -466,6 +469,7 @@ figure.alignleft {
 	height: 48px;
 	background: #7791A5;
 	margin-right: 1em;
+	display: inline-block;
 }
 
 #menu-social li a {

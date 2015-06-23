@@ -31,7 +31,7 @@ function supersimple_list_subpages() {
 		
 	endif;
 	
-	if ( $childpages ) return '<ul class="menu">' . $childpages . '</ul>';
+	if ( $childpages ) return '<ul class="page_menu">' . $childpages . '</ul>';
 	
 }
 

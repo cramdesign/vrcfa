@@ -311,11 +311,79 @@
 
 
 /* sectionmenu
--------------------------------------------------------------- */
 
 .sectionmenu {
 	margin: 2em 0;
 }
+
+.sectionmenu ul li {
+	float: none;
+	display: block;
+	margin: 0;
+	margin-bottom: 1px;
+}
+
+.sectionmenu ul li a {
+	display: block;
+	color: #999;
+	padding: 0.75em 1em;
+	background: #ddd;
+}
+
+.sectionmenu > ul > li:first-child a {
+	background: #aaa;
+	color: #fff;
+	font-weight: bold;
+}
+
+.sectionmenu ul li.current_page_item a {
+	background: #ccc;
+	color: #777;
+	position: relative;
+}
+
+.sectionmenu ul li.current_page_item > a:before {
+	display: block;
+	content: "\025B8";
+	position: absolute;
+	left: 0;
+}
+-------------------------------------------------------------- */
+
+.sectionmenu {
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.sectionmenu ul {
+	margin: 0;
+	list-style: none;
+	padding: 0;
+}
+
+.sectionmenu > ul {
+}
+
+.sectionmenu > ul > li {
+	border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.sectionmenu a {
+	display: block;
+	padding: 0.25em 0;
+}
+
+.sectionmenu ul li.current_page_item > a {
+	font-weight: bold;
+}
+
+.sectionmenu ul li.current_page_item > a:before {
+	content: "\025B8\00a0";
+}
+
+.sectionmenu ul ul li a:before {
+	content: "\02022\00a0";
+}
+
 
 @media ( min-width: 720px ) {
 	
@@ -333,35 +401,4 @@
 	
 }
 
-.sectionmenu ul li {
-	float: none;
-	display: block;
-	margin: 0;
-	margin-bottom: 1px;
-}
 
-.sectionmenu ul li a {
-	display: block;
-	color: #999;
-	padding: 0.75em 1em;
-	background: #ddd;
-}
-
-.sectionmenu ul li:first-child a {
-	background: #aaa;
-	color: #fff;
-	font-weight: bold;
-}
-
-.sectionmenu ul li.current_page_item a {
-	background: #ccc;
-	color: #777;
-	position: relative;
-}
-
-.sectionmenu ul li.current_page_item a:before {
-	display: block;
-	content: "\025B8";
-	position: absolute;
-	left: 0;
-}
