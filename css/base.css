@@ -351,7 +351,7 @@
 -------------------------------------------------------------- */
 
 .sectionmenu {
-	border-bottom: 1px solid rgba(0,0,0,0.1);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 .sectionmenu ul {
@@ -364,12 +364,12 @@
 }
 
 .sectionmenu > ul > li {
-	border-top: 1px solid rgba(0,0,0,0.1);
+	border-top: 1px solid rgba(0,0,0,0.2);
 }
 
 .sectionmenu a {
 	display: block;
-	padding: 0.25em 0;
+	padding: 0.25em 0.5em 0.25em 0;
 }
 
 .sectionmenu ul li.current_page_item > a {
@@ -381,9 +381,17 @@
 }
 
 .sectionmenu ul ul li a:before {
-	content: "\02022\00a0";
+/* 	content: "\02022\00a0"; */
 }
 
+.sectionmenu ul ul {
+	display: none;
+}
+
+.sectionmenu ul li.current_page_item > ul,
+.sectionmenu ul li.current_page_ancestor > ul {
+	display: block;
+}
 
 @media ( min-width: 720px ) {
 	
