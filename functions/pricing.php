@@ -44,6 +44,9 @@ function sbe_render_ticket_pricing() {
 	$student_lower		= get_metabox( 'event-ticket-student-lower' );
 	$student_upper		= get_metabox( 'event-ticket-student-upper' );
 	
+	$child_lower		= get_metabox( 'event-ticket-child-lower' );
+	$child_upper		= get_metabox( 'event-ticket-child-upper' );
+	
 	$caption 			= get_metabox( 'event-ticket-caption' );
 	
 	function price( $lower, $upper ) {
@@ -98,6 +101,13 @@ function sbe_render_ticket_pricing() {
 					<tr>
 						<th>Students</th>
 						<?php price( $student_lower, $student_upper ); ?>
+					</tr>
+					<?php endif; ?>
+					
+					<?php if ( $child_lower ) : ?>
+					<tr>
+						<th>Under 12</th>
+						<?php price( $child_lower, $child_upper ); ?>
 					</tr>
 					<?php endif; ?>
 					

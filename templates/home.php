@@ -41,7 +41,7 @@
 			
 					if ( has_post_thumbnail() ) : 
 					
-						$hero_size = 'large';
+						$hero_size = 'medium';
 						$hero = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $hero_size );
 						
 						$src = $hero[ 0 ];

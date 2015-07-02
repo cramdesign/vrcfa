@@ -1,7 +1,7 @@
 <?php
 /*
 
-Plugin Name: Super Basic Events
+Plugin Name: Supersimple Events
 Description: A plugin to show a list of upcoming events on the front-end.
 Version: 1.2.3
 Author: Matt Cram
@@ -172,6 +172,9 @@ function sbe_render_event_info_metabox( $post ) {
 	$student_lower		= get_metabox( 'event-ticket-student-lower' );
 	$student_upper		= get_metabox( 'event-ticket-student-upper' );
 	
+	$child_lower		= get_metabox( 'event-ticket-child-lower' );
+	$child_upper		= get_metabox( 'event-ticket-child-upper' );
+	
 	$caption			= get_metabox( 'event-ticket-caption' );
 	$sponsor			= get_metabox( 'event-sponsor' );
 	
@@ -187,6 +190,7 @@ function sbe_render_event_info_metabox( $post ) {
 	?>
 	
 	<table class="meta">
+
 		<tr>
 			<th> 
 				<label for="sbe-start-date">Event Start Date:</label>
@@ -196,6 +200,7 @@ function sbe_render_event_info_metabox( $post ) {
 				<input type="text" id="sbe-start-time" name="sbe-start-time" class="half" value="<?php echo $start_time; ?>" placeholder="Starting Time. Example: 7:30 pm">
 			</td>
 		</tr>
+
 		<tr>
 			<th>
 				<label for="sbe-end-date">Event End Date:</label>
@@ -205,6 +210,7 @@ function sbe_render_event_info_metabox( $post ) {
 				<input type="text" id="sbe-end-time" name="sbe-end-time" class="half" value="<?php echo $end_time; ?>" placeholder="Ending Time">
 			</td>
 		</tr>
+
 		<tr>
 			<th>
 				<label for="sbe-ticket-link">Custom Link:</label>
@@ -213,6 +219,7 @@ function sbe_render_event_info_metabox( $post ) {
 				<input type="text" id="sbe-custom-link" name="sbe-custom-link" value="<?php echo $custom_link; ?>" placeholder="Link to an external page">
 			</td>
 		</tr>
+
 		<tr>
 			<th>
 				<label for="sbe-ticket-link">Purchase Tickets Link:</label>
@@ -221,6 +228,7 @@ function sbe_render_event_info_metabox( $post ) {
 				<input type="text" id="sbe-ticket-link" name="sbe-ticket-link" value="<?php echo $ticket_link; ?>" placeholder="The full Ticketmaster link">
 			</td>
 		</tr>
+
 		<tr>
 			<th>
 				<label>Standard Ticket Price:</label>
@@ -230,6 +238,7 @@ function sbe_render_event_info_metabox( $post ) {
 				<input type="text" id="sbe-ticket-standard-upper" name="sbe-ticket-standard-upper" class="half" value="<?php echo $standard_upper; ?>" placeholder="Upper Tier">
 			</td>
 		</tr>
+
 		<tr>
 			<th>
 				<label>Senior Ticket Price:</label>
@@ -239,6 +248,7 @@ function sbe_render_event_info_metabox( $post ) {
 				<input type="text" id="sbe-ticket-senior-upper" name="sbe-ticket-senior-upper" class="half" value="<?php echo $senior_upper; ?>" placeholder="Upper Tier">
 			</td>
 		</tr>
+
 		<tr>
 			<th>
 				<label>Student Ticket Price:</label>
@@ -248,6 +258,17 @@ function sbe_render_event_info_metabox( $post ) {
 				<input type="text" id="sbe-ticket-student-upper" name="sbe-ticket-student-upper" class="half" value="<?php echo $student_upper; ?>" placeholder="Upper Tier">
 			</td>
 		</tr>
+
+		<tr>
+			<th>
+				<label>Under 12 Ticket Price:</label>
+			</th>
+			<td>
+				<input type="text" id="sbe-ticket-child-lower" name="sbe-ticket-child-lower" class="half" value="<?php echo $child_lower; ?>" placeholder="Lower Tier">
+				<input type="text" id="sbe-ticket-child-upper" name="sbe-ticket-child-upper" class="half" value="<?php echo $child_upper; ?>" placeholder="Upper Tier">
+			</td>
+		</tr>
+
 		<tr>
 			<th>
 				<label for="sbe-ticket-link">Ticket Pricing Caption:</label>
@@ -256,6 +277,7 @@ function sbe_render_event_info_metabox( $post ) {
 				<input type="text" id="sbe-ticket-caption" name="sbe-ticket-caption" value="<?php echo $caption; ?>" placeholder="(optional caption)">
 			</td>
 		</tr>
+
 		<tr>
 			<th>
 				<label for="sbe-sponsor">Event Sponsor:</label>
@@ -264,6 +286,7 @@ function sbe_render_event_info_metabox( $post ) {
 				<input type="text" id="sbe-sponsor" name="sbe-sponsor" value="<?php echo $sponsor; ?>" placeholder="Sponsor text">
 			</td>
 		</tr>
+
 	</table>
 
 	<?php
@@ -375,6 +398,8 @@ function sbe_save_event_info( $post_id ) {
 		update_post_meta( $post_id, 'event-ticket-link', sanitize_text_field( $_POST['sbe-ticket-link'] ) );
 	}
 	
+	
+	// Standard
 	if( isset( $_POST['sbe-ticket-standard-lower'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-standard-lower', sanitize_text_field( $_POST['sbe-ticket-standard-lower'] ) );
 	}
@@ -383,6 +408,7 @@ function sbe_save_event_info( $post_id ) {
 		update_post_meta( $post_id, 'event-ticket-standard-upper', sanitize_text_field( $_POST['sbe-ticket-standard-upper'] ) );
 	}
 	
+	// Senior
 	if( isset( $_POST['sbe-ticket-senior-lower'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-senior-lower', sanitize_text_field( $_POST['sbe-ticket-senior-lower'] ) );
 	}
@@ -391,6 +417,7 @@ function sbe_save_event_info( $post_id ) {
 		update_post_meta( $post_id, 'event-ticket-senior-upper', sanitize_text_field( $_POST['sbe-ticket-senior-upper'] ) );
 	}
 	
+	// Student
 	if( isset( $_POST['sbe-ticket-student-lower'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-student-lower', sanitize_text_field( $_POST['sbe-ticket-student-lower'] ) );
 	}
@@ -398,6 +425,16 @@ function sbe_save_event_info( $post_id ) {
 	if( isset( $_POST['sbe-ticket-student-upper'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-student-upper', sanitize_text_field( $_POST['sbe-ticket-student-upper'] ) );
 	}
+	
+	// Child
+	if( isset( $_POST['sbe-ticket-child-lower'] ) ) {
+		update_post_meta( $post_id, 'event-ticket-child-lower', sanitize_text_field( $_POST['sbe-ticket-child-lower'] ) );
+	}
+	
+	if( isset( $_POST['sbe-ticket-child-upper'] ) ) {
+		update_post_meta( $post_id, 'event-ticket-child-upper', sanitize_text_field( $_POST['sbe-ticket-child-upper'] ) );
+	}
+	
 	
 	if( isset( $_POST['sbe-ticket-caption'] ) ) {
 		update_post_meta( $post_id, 'event-ticket-caption', sanitize_text_field( $_POST['sbe-ticket-caption'] ) );

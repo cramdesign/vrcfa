@@ -54,7 +54,7 @@
 				<?php 
 				
 					// featured image
-					if ( has_post_thumbnail( $post->ID ) ) echo( '<figure>' . get_the_post_thumbnail( $post->ID, 'large' ) . '</figure>' );
+					if ( has_post_thumbnail( $post->ID ) ) echo( '<figure>' . get_the_post_thumbnail( $post->ID, 'medium' ) . '</figure>' );
 						
 					// main content
 					the_content();

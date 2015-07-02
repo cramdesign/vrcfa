@@ -7,7 +7,8 @@ require_once( 'functions/pricing.php' );
 require_once( 'functions/shortcodes.php' );
 require_once( 'functions/customizer.php' );
 require_once( 'functions/editor-styles.php' );
-require_once( 'functions/super-basic-events/sbe-events.php' );
+require_once( 'functions/supersimple-events/sbe-events.php' );
+require_once( 'functions/disable-emojis.php' );
 
 
 
