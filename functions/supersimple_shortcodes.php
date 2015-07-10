@@ -36,33 +36,6 @@ function get_top_parent_page_id() {
 
 // List current page and any child pages in a menu
 // [ss_list_pages]
-function supersimple_list_subpagesOLD() { 
-
-	global $post;
-	$parent_page = get_top_parent_page_id($post->ID);
-	
-	if ( is_page() && $post->post_parent ) :
-	
-		// on a subpage
-		$childpages  = wp_list_pages( 'sort_column=menu_order&title_li=&include=' . $post->post_parent . '&echo=0' );
-		$childpages .= wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->post_parent . '&echo=0' );
-		
-	else :
-	
-		// on the parent page
-		$childpages  = wp_list_pages( 'sort_column=menu_order&title_li=&include=' . $post->ID . '&echo=0' );
-		$childpages .= wp_list_pages( 'sort_column=menu_order&title_li=&child_of=' . $post->ID . '&echo=0' );
-		
-	endif;
-	
-	if ( $childpages ) return '<ul class="page_menu">' . $childpages . '</ul>';
-	
-}
-
-
-
-// List current page and any child pages in a menu
-// [ss_list_pages]
 function supersimple_list_subpages() { 
 
 	global $post;

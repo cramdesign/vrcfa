@@ -10,4 +10,4 @@
 
 ?>
 
-<!-- taxonomy-sbe_venue.php -->
+<!-- taxonomy-sbe_category.php -->
