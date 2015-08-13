@@ -87,7 +87,7 @@
 	
 	else :
 
-		echo ( 'No posts meet this criteria.' );
+		echo ( '<!-- No featured events to display -->' );
 
 	endif;
 

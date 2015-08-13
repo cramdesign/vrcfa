@@ -31,6 +31,7 @@ class Upcoming_Events extends WP_Widget {
 	
 		$widget_defaults = array(
 			'title'				=>	'Upcoming Events',
+			'cat'				=>	'',
 			'number_events'		=>	5,
 			'offset'			=>	0,
 			'show_excerpt'		=>	false
@@ -62,6 +63,11 @@ class Upcoming_Events extends WP_Widget {
 		</p>
 
 		<p>
+			<label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e( 'Exclude Categories (IDs of categories to skip)', 'upcoming-events' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id('exclude'); ?>" name="<?php echo $this->get_field_name('exclude'); ?>" type="text" value="<?php echo esc_attr( $instance['exclude'] ); ?>" />
+		</p>
+
+		<p>
 			<input id="<?php echo $this->get_field_id( 'show_excerpt' ); ?>" name="<?php echo $this->get_field_name( 'show_excerpt' ); ?>" type="checkbox" value="1" <?php checked( '1', $instance['show_excerpt'] ); ?>/>
 			<label for="<?php echo $this->get_field_id( 'show_excerpt' ); ?>"><?php _e( 'Show excerpt, if available?' ); ?></label> 
         </p>
@@ -86,12 +92,13 @@ class Upcoming_Events extends WP_Widget {
 	 * @param  array $old_instance Old instance of the widget
 	 * @return array An updated instance of the widget
 	 */
-	public function update( $new_instance, $old_instance ) {
+	function update( $new_instance, $old_instance ) {
 		
 		$instance = $old_instance;
 		
 		$instance['title'] 			= strip_tags( $new_instance['title'] );
 		$instance['offset'] 		= strip_tags( $new_instance['offset'] );
+		$instance['exclude'] 		= strip_tags( $new_instance['exclude'] );
 		$instance['number_events'] 	= $new_instance['number_events'];
 		$instance['show_excerpt'] 	= $new_instance['show_excerpt'];
 		$instance['show_feature'] 	= $new_instance['show_feature'];
@@ -112,6 +119,7 @@ class Upcoming_Events extends WP_Widget {
 		extract( $args );
 		$title  		= apply_filters( 'widget_title', $instance['title'] );
 		$offset 		= apply_filters( 'widget_title', $instance['offset'] );
+		$exclude 		= apply_filters( 'widget_title', $instance['exclude'] );
 		$number 		= $instance['number_events'];
 		$show_excerpt 	= $instance['show_excerpt'];
 		$show_feature 	= $instance['show_feature'];
@@ -128,12 +136,25 @@ class Upcoming_Events extends WP_Widget {
 			)
 			
 		);
+		
+		$tax_query_args = array(
+			
+			'relation'		=>	'AND',
+			array(
+				'taxonomy'	=>	'sbe_category',
+				'field'		=>	'ID',
+				'terms'		=>	$exclude,
+				'operator' 	=>	'NOT IN'
+			)
+			
+		);
 
 		$query_args = array(
 			
 			'post_type'				=>	'events',
 			'posts_per_page'		=>	$number,
 			'offset'				=>	$offset,
+			'tax_query'				=>	$tax_query_args,
 			'post_status'			=>	'publish',
 			'ignore_sticky_posts'	=>	true,
 			'order'					=>	'ASC',
@@ -164,7 +185,7 @@ class Upcoming_Events extends WP_Widget {
 			
 		else : 
 		
-			echo( 'No events though $number were called.' );
+			echo( 'No events though ' . $number . ' were called.' );
 	
 		endif; 
 		

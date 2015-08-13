@@ -3,7 +3,7 @@
 
 Plugin Name: Supersimple Events
 Description: A plugin to show a list of upcoming events on the front-end.
-Version: 1.2.3
+Version: 1.2.4
 Author: Matt Cram
 Author URI: http://mattcram.com
 Text Domain: super-basic-events
