@@ -31,7 +31,6 @@ class Upcoming_Events extends WP_Widget {
 	
 		$widget_defaults = array(
 			'title'				=>	'Upcoming Events',
-			'cat'				=>	'',
 			'number_events'		=>	5,
 			'offset'			=>	0,
 			'show_excerpt'		=>	false
