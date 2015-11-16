@@ -17,7 +17,8 @@
 		
 			<header>
 					
-					<h2>Current Season: <?php echo $current_season_cat_name; ?></h2>
+					<h2>Upcoming Events</h2>
+					<!-- <h2>Current Season: <?php echo $current_season_cat_name; ?></h2> -->
 					<div class="content"><?php the_content(); ?></div><!-- entry-content -->
 				
 			</header>
